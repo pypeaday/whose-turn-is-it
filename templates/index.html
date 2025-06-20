@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whose Turn Is It?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Noto+Sans:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #2D3748; /* Dark Slate Blue/Gray */
+            color: #E2E8F0; /* Light Grayish Blue - default text */
+        }
+        .container {
+            background-color: #1A202C; /* Very Dark Blue/Gray */
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+        h1 {
+            font-family: 'Lora', serif;
+            color: #90CDF4; /* Soft Light Blue */
+            margin-bottom: 30px;
+            font-size: 2.6em;
+            font-weight: 500;
+        }
+        .btn {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 500;
+            background-color: #4A5568; /* Medium Slate Gray */
+            color: #F7FAFC; /* Very Light Gray/Off-White */
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.15em;
+            cursor: pointer;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+            margin-top: 25px;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        .btn:hover {
+            background-color: #2C3E50; /* Slightly Darker/Richer Blue-Gray */
+            transform: translateY(-1px);
+        }
+        .error {
+            color: #FEB2B2; /* Light Red */
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.65;
+            margin-bottom: 25px;
+            color: #A0AEC0; /* Cool Gray */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Whose Turn Is It?</h1>
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% endif %}
+        {% if players_count > 0 %}
+            <p>Ready to find out who goes first among {{ players_count }} participant{{ 's' if players_count > 1 else '' }}?</p>
+            <a href="/generate" class="btn">Generate Order</a>
+        {% else %}
+            <p>Please set the PLAYERS environment variable.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "whose-turn-is-it"
+dynamic = ["version"]
+description = "A simple web app to determine the order of participants in an event"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.hatch.version]
+path = "app/__about__.py"

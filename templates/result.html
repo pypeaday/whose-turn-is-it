@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Order - Whose Turn Is It?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Noto+Sans:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #2D3748; /* Dark Slate Blue/Gray */
+            color: #E2E8F0; /* Light Grayish Blue - default text */
+        }
+        .container {
+            background-color: #1A202C; /* Very Dark Blue/Gray */
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+        h1 {
+            font-family: 'Lora', serif;
+            color: #90CDF4; /* Soft Light Blue */
+            margin-bottom: 25px;
+            font-size: 2.4em;
+            font-weight: 500;
+        }
+        .btn {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 500;
+            background-color: #4A5568; /* Medium Slate Gray */
+            color: #F7FAFC; /* Very Light Gray/Off-White */
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+            margin-top: 30px;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        .btn:hover {
+            background-color: #2C3E50; /* Slightly Darker/Richer Blue-Gray */
+            transform: translateY(-1px);
+        }
+        .player-list {
+            list-style-type: decimal;
+            padding-left: 0; 
+            margin-top: 25px;
+            text-align: left;
+            display: block; 
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            max-width: 100%;
+        }
+        .player-list li {
+            background-color: #4A5568; /* Medium Slate Gray - for list items */
+            border: 1px solid #718096; /* Cool Gray border */
+            color: #E2E8F0; /* Light Grayish Blue */
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 1.15em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+            transition: background-color 0.2s ease;
+        }
+        .player-list li:hover {
+            background-color: #5A6678; /* Slightly Lighter Slate Gray on hover */
+        }
+        .error {
+            color: #FEB2B2; /* Light Red */
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+        p {
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #A0AEC0; /* Cool Gray */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>No Arguments!</h1>
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% elif players %}
+            <ol class="player-list">
+                {% for player in players %}
+                    <li>{{ player }}</li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>No players found. Please set the PLAYERS environment variable.</p>
+        {% endif %}
+        <a href="/" class="btn">Generate Again</a>
+    </div>
+</body>
+</html>
