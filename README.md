@@ -14,6 +14,8 @@ go to `http://localhost:8000` and click "generate order" to get a randomly shuff
 
 # Examples
 
+`export PLAYERS=rick,morty,summer,birdman`
+
 ![20250620011931_fdb87783.png](https://cdn.statically.io/gh/pypeaday/images.pype.dev/main/blog-media/20250620011931_fdb87783.png)
 
 After cliking "Generate"
