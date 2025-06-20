@@ -74,7 +74,7 @@ if __name__ == "__main__":
     import uvicorn
     # Get host and port from environment variables or use defaults
     HOST = os.getenv("HOST", "0.0.0.0")
-    PORT = int(os.getenv("PORT", "8009"))
+    PORT = int(os.getenv("PORT", "8000"))
     RELOAD = os.getenv("UVICORN_RELOAD", "true").lower() == "true"
 
     # Check if PLAYERS is set, and provide a warning if not, as it's crucial for the app
